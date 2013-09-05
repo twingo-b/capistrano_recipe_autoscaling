@@ -30,8 +30,8 @@ set :autoscaling_group_name, fetch(:autoscaling_group_name, "autoscaling_group_n
 namespace :autoscale do
 	desc "create ami"
 	task :create_ami do
-		run_locally <<-CMD
-			export AWS_CONFIG_FILE=#{Dir.pwd}/aws-cli/aws.config
+		run <<-CMD
+			export AWS_CONFIG_FILE=#{Dir.pwd}/aws-cli/aws.config;
 
 			ec2-metadata -i |\
 			awk '{print $NF}' |\
@@ -44,7 +44,7 @@ namespace :autoscale do
 	end
 	desc "create userdata"
 	task :create_userdata do
-		run_locally <<-CMD
+		run <<-CMD
 			cd #{Dir.pwd}/cloud-init-user-data;
 			write-mime-multipart --output=combined-userdata.txt \
 				cloud-boothook.txt:text/cloud-boothook \

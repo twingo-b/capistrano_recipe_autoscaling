@@ -2,5 +2,5 @@
 exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 
 cd /home/capistrano/capistrano_recipe_autoscaling
-sudo -u capistrano cap -l /var/log/capistrano.log local deploy
+sudo -u capistrano /usr/local/bin/cap -l /home/capistrano/capistrano.log local deploy
 
