@@ -1,0 +1,6 @@
+#cloud-config
+repo_upgrade: none
+locale: ja_JP.UTF-8
+runcmd:
+- [cp, /usr/share/zoneinfo/Asia/Tokyo, /etc/localtime]
+
